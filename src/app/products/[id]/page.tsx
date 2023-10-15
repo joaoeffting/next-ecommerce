@@ -4,6 +4,8 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { cache } from "react";
+import AddToCart from "./AddToCart";
+import { incrementProductQuantity } from "./actions";
 
 interface ProductDetailsProps {
   params: { id: string };
@@ -48,6 +50,10 @@ export default async function ProductDetails({
         <h1 className="text-5xl font-bold">{product.name}</h1>
         <PriceTag price={product.price} className="mt-4" />
         <p className="py-6">{product.description}</p>
+        <AddToCart
+          productId={product.id}
+          incrementProductQuantity={incrementProductQuantity}
+        />
       </div>
     </div>
   );
